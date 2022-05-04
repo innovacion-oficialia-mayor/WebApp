@@ -8,5 +8,4 @@
 <style>
 /* css base styles */
 @import '@/assets/base.css';
-
 </style>
