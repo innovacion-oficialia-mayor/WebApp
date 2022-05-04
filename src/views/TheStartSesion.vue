@@ -8,7 +8,6 @@ export default {
     componets: {
         'the-start-item':TheStartItem,
         'app-link':AppLink
-
     },
     components: { TheStartItem, AppLink }
 };
