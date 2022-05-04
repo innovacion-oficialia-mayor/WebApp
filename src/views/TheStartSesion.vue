@@ -1,12 +1,16 @@
 <script>
 import TheStartItem from '@/components/TheStartItem.vue';
+import AppLink from '../components/AppLink.vue';
+
 
 export default {
     name: "TheStart",
     componets: {
         'the-start-item':TheStartItem,
+        'app-link':AppLink
+
     },
-    components: { TheStartItem }
+    components: { TheStartItem, AppLink }
 };
 </script>
 
@@ -20,8 +24,8 @@ export default {
       <p class="start__disclaimer">Elige sí eres administrador o servidor público para continuar</p>
     </template>
     <template #actions>
-      <router-link to="">Soy Administrador</router-link>
-      <router-link to="">Soy Servidor Público</router-link>
+      <app-link :to="{name: 'admin'}">Soy Administrador</app-link>
+      <app-link :to="{name: 'user'}">Soy Servidor Público</app-link>
     </template>
     <picture>
       <img class="start__logo" src="@/assets/logo.png" alt="Logo de Celaya">
