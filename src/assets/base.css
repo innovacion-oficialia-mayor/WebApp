@@ -23,7 +23,8 @@
 
 /* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
+  /* Default colors */
+  /* --color-background: var(--vt-c-white);
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -31,13 +32,30 @@
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-text: var(--vt-c-text-light-1); */
 
-  --section-gap: 160px;
+  /* Dark theme is the initial */
+  --color-background: #1B1A2F;
+  --color-text: #ffffff;
+  --color-text-soft: #E0E4E4;
+  --color-text-mute: #999999;
+
+  /* text colors */
+  --color-primary-rose: #FF349A;
+  --color-primary-blue: #3552AB;
+
+  /* secundaty colors */
+  --color-secundary-yellow: #FFB500;
+  --color-secundary-red: #FF2D1E;
+  --color-secundary-green: #00B93B;
+
+
+
+
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --color-background: var(--vt-c-black);
     --color-background-soft: var(--vt-c-black-soft);
     --color-background-mute: var(--vt-c-black-mute);
@@ -47,7 +65,7 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
-  }
+  } */
 }
 
 *,
@@ -59,15 +77,24 @@
   font-weight: normal;
 }
 
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("./fonts/RobotoMono-vf.ttf") format("truetype");
+  font-display: swap;
+}
+
+html {
+  /* 1 rem = 10px */
+  font-size: 62.5%;
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: 15px;
+  font-family: "Roboto Mono", monospace;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
