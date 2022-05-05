@@ -1,15 +1,9 @@
 <script>
 import TheStartItem from '@/components/TheStartItem.vue';
-import AppLink from '../components/AppLink.vue';
-
 
 export default {
-    name: "TheStart",
-    componets: {
-        'the-start-item':TheStartItem,
-        'app-link':AppLink
-    },
-    components: { TheStartItem, AppLink }
+    name: "TheStartSesion",
+    components: { "the-start-item":TheStartItem }
 };
 </script>
 
@@ -50,5 +44,6 @@ export default {
 
 .start__link{
   width: 60%;
+  min-height: 65px;
 }
 </style>
