@@ -31,7 +31,6 @@ export default {
 .item__container{
   width: 90%;
   margin: 30px auto;
-  /* background-color: teal; */
 }
 
 .item__image-wrapper {
@@ -39,10 +38,12 @@ export default {
   width: 85%;
   max-width: 600px;
   margin: 0 auto;
+  margin-bottom: 8px;
 }
 
 .start__info {
   text-align: center;
+  padding: 10px 25px;
 }
 
 .start__title{
