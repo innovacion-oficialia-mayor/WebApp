@@ -57,7 +57,8 @@ export default {
 }
 
 .start__actions {
-  margin: 30px 0;
+  margin-top: 10px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
