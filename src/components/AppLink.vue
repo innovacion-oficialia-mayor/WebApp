@@ -13,18 +13,18 @@ export default {
 <style scoped>
 
 .router__link {
-  min-width: 170px;
-  max-width: 400px;
-  min-height: 65px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 170px;
+  max-width: 400px;
   padding: 10px 15px;
+  text-align: center;
   font-size: 1.4rem;
   font-weight: 800;
-  border: 0;
-  border-radius: 12px;
   text-decoration: none;
+  border: 0;
+  border-radius: 1.2rem;
   background-color: var(--color-primary-rose);
   color: var(--color-primary-white);
   cursor: pointer;
