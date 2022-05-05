@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import TheStartSesion from '@/views/TheStartSesion.vue';
+import StartSesion from '@/views/StartSesion.vue';
 
 // routes
 const routes = [
   {
     path: '/',
     name: 'start',
-    component: TheStartSesion,
+    component: StartSesion,
     // alias: '/home'
   },
   {
@@ -17,12 +17,12 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('@/views/TheStartAdmin.vue')
+    component: () => import('@/views/StartAdmin.vue')
   },
   {
     path: '/user',
     name: 'user',
-    component: () => import('@/views/TheStartUser.vue')
+    component: () => import('@/views/StartUser.vue')
   }
 ];
 

@@ -2,26 +2,25 @@
 import TheStartItem from '@/components/TheStartItem.vue';
 
 export default {
-    name: "TheStartSesion",
+    name: "StartAdmin",
     components: { "the-start-item":TheStartItem }
 };
 </script>
 
 <template>
-  <main class="start__main">
+   <main class="start__main">
     <the-start-item>
       <template #image>
-        <img class="start__image" src="@/assets/images/start-choose.svg" alt="Imagen de bienvenida">
+        <img class="start__image" src="@/assets/images/start-admin.svg" alt="Imagen de bienvenida para el administrador">
       </template>
       <template #info-title>
-        Elige tu sesión
+        Inicia de sesión
       </template>
        <template #info-disclaimer>
-        Elige sí eres administrador o servidor público para continuar
+        Ingresa tus datos correctamente para continuar
       </template>
       <template #actions>
-        <app-link :to="{name: 'admin'}" class="start__link">Soy Administrador</app-link>
-        <app-link :to="{name: 'user'}" class="start__link">Soy Servidor Público</app-link>
+        <app-link :to="{name: 'start'}" class="start__link">Iniciar sesión</app-link>
       </template>
         <img class="start__logo" src="@/assets/logo.png" alt="Logo de Celaya">
     </the-start-item>
@@ -29,21 +28,9 @@ export default {
 </template>
 
 <style scoped>
-
-.start__main {
-  width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 .start__image, .start__logo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.start__link{
-  width: 60%;
-  min-height: 65px;
 }
 </style>

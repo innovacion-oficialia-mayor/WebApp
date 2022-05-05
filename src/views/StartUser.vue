@@ -2,7 +2,7 @@
 import TheStartItem from '@/components/TheStartItem.vue';
 
 export default {
-    name: "TheStartAdmin",
+    name: "StartUser",
     components: { "the-start-item":TheStartItem }
 };
 </script>
@@ -11,13 +11,13 @@ export default {
    <main class="start__main">
     <the-start-item>
       <template #image>
-        <img class="start__image" src="@/assets/images/start-admin.svg" alt="Imagen de bienvenida para el administrador">
+        <img class="start__image" src="@/assets/images/start-user.svg" alt="Imagen de bienvenida para el servidor publico">
       </template>
       <template #info-title>
-        Inicia de sesión
+        Bienvenido Servidor Publico
       </template>
        <template #info-disclaimer>
-        Ingresa tus datos correctamente para continuar
+        Ingresa tu nomina para continuar
       </template>
       <template #actions>
         <app-link :to="{name: 'start'}" class="start__link">Iniciar sesión</app-link>
@@ -28,4 +28,9 @@ export default {
 </template>
 
 <style scoped>
+.start__image, .start__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 </style>
