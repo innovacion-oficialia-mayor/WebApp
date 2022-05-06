@@ -1,18 +1,19 @@
 <script>
 export default {
   name: 'AppInput',
-  data() {
-    return {
-
-    };
-  }
+  props: {
+    currentInput: {
+      type: Object,
+      required: true
+    },
+  },
 };
 </script>
 
 <template>
-  <label for="" class="app-input__label">
-    <span class="app-input__span">Label</span>
-    <input type="text" name="" id="" class="app-input__input" placeholder="hola" aria-label="">
+  <label :for="currentInput.id" class="app-input__label">
+    <span class="app-input__span">{{ currentInput.labelText }}</span>
+    <input :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder">
   </label>
 </template>
 
@@ -39,11 +40,35 @@ export default {
     padding: 12px 8px;
     color: var(--color-text);
     background-color: transparent;
+    outline: 0;
   }
 
   ::placeholder {
     font-size: 1.3rem;
     color: var(--color-text-mute);
+  }
+
+  .app-input__input:invalid {
+    border-color: var(--color-secundary-red);
+    animation: shake 300ms;
+  }
+
+  .app-input__input:valid {
+    border-color: var(--color-primary-rose);
+  }
+
+  @keyframes shake{
+    25% {
+    transform: translateX(4px);
+    }
+
+    50% {
+      transform: translateX(-4px);
+    }
+
+    75% {
+      transform: translateX(4px);
+    }
   }
 
 
