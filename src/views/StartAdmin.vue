@@ -7,11 +7,26 @@ export default {
     components: { "the-start-item":TheStartItem, 'app-form':AppForm },
     methods: {
       handlerSubmit(e){
-        // validate the login form
         const data = Object.fromEntries(new FormData(e.target));
         console.log(data);
-        // function to redirect to the admin's dashboard
-        // console.log(this.$route.query);
+        // validate the login form (this is just a prube)
+        console.log(data.email, data.password);
+        data.email === 'fran@gmail.com' && data.password === 'admin' ? this.validated = true : this.validated = false;
+
+        if(this.validated){
+          // function to redirect to the admin's dashboard
+          this.$router.push({name:'start'});
+          return;
+        }
+        // async view invalid message
+        e.target.reset();
+        setTimeout(() => {
+          setTimeout(() => {
+            this.invalidElement = false;
+          }, 4000);
+            this.invalidElement = true;
+        }, 0);
+
       }
     },
     data(){
@@ -22,7 +37,8 @@ export default {
             type:'email',
             labelText: 'Email',
             name: 'email',
-            placeholder:'Ingresa tu email'
+            placeholder:'Ingresa tu email',
+            pattern:'[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'
           },
           {
             id:2,
@@ -33,6 +49,7 @@ export default {
           },
           ],
         validated: false,
+        invalidElement: false,
       };
     }
 };
@@ -45,13 +62,13 @@ export default {
         <img class="start__image" src="@/assets/images/start-admin.svg" alt="Imagen de bienvenida para el administrador">
       </template>
       <template #info-title>
-        Inicia de sesión
+        Inicio de sesión
       </template>
        <template #info-disclaimer>
         Ingresa tus datos correctamente para continuar
       </template>
       <template #actions>
-        <app-form class="start__admin-form" @submit.prevent="handlerSubmit" :inputsList="inputsList"></app-form>
+        <app-form class="start__admin-form" @submit.prevent="handlerSubmit" :inputsList="inputsList" :state="invalidElement"></app-form>
       </template>
         <img class="start__logo" src="@/assets/logo.png" alt="Logo de Celaya">
     </the-start-item>

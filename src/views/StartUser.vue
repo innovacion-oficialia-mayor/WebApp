@@ -13,26 +13,44 @@ export default {
             type:'text',
             labelText: 'Nómina',
             name: 'nomina',
-            placeholder:'Ingresa tu nómina'
+            placeholder:'Ingresa tu nómina',
+            pattern: '[0-9]{5}'
           },
           {
             id:2,
             type:'password',
             labelText: 'Confirmar nómina',
             name: 'nominaConfirm',
-            placeholder:'Confirma tu nómina'
+            placeholder:'Confirma tu nómina',
+            pattern: '[0-9]{5}'
           },
           ],
         validated: false,
+        invalidElement: false,
       };
     },
     methods: {
       handlerSubmit(e){
-        // validate the login form
         const data = Object.fromEntries(new FormData(e.target));
         console.log(data);
-        // function to redirect to the admin's dashboard
-        // console.log(this.$route.query);
+        // validate the login form (this is just a prube)
+        console.log(data.nomina, data.nominaConfirm);
+        data.nomina === '123' && data.nominaConfirm === data.nomina ? this.validated = true : this.validated = false;
+
+        if(this.validated){
+          // function to redirect to the admin's dashboard
+          this.$router.push({name:'start'});
+          return;
+        }
+        // async view invalid message
+        e.target.reset();
+        setTimeout(() => {
+          setTimeout(() => {
+            this.invalidElement = false;
+          }, 4000);
+            this.invalidElement = true;
+        }, 0);
+
       }
     },
 };
@@ -45,13 +63,13 @@ export default {
         <img class="start__image" src="@/assets/images/start-user.svg" alt="Imagen de bienvenida para el servidor publico">
       </template>
       <template #info-title>
-        Bienvenido Servidor Publico
+        Bienvenido Servidor Público
       </template>
        <template #info-disclaimer>
-        Ingresa tu nomina para continuar
+        Ingresa tu nómina para continuar
       </template>
       <template #actions>
-         <app-form class="start__admin-form" @submit.prevent="handlerSubmit" :inputsList="inputsList"></app-form>
+         <app-form class="start__admin-form" @submit.prevent="handlerSubmit" :inputsList="inputsList" :state="invalidElement"></app-form>
       </template>
         <img class="start__logo" src="@/assets/logo.png" alt="Logo de Celaya">
     </the-start-item>
