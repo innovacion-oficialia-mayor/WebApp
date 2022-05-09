@@ -8,9 +8,18 @@ export default {
 </script>
 
 <template>
-    <h1>Dashboard</h1>
+  <div class="dashboard__container">
+
     <the-footer></the-footer>
+  </div>
 </template>
 
 <style scoped>
+.dashboard__container {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+
 </style>
