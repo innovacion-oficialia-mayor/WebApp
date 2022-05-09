@@ -15,7 +15,7 @@ export default {
 
         if(this.validated){
           // function to redirect to the admin's dashboard
-          this.$router.push({name:'start'});
+          this.$router.push({name:'dashboard'});
           return;
         }
         // async view invalid message
