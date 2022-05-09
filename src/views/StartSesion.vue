@@ -46,4 +46,8 @@ export default {
   width: 60%;
   min-height: 65px;
 }
+
+.start__link:active {
+  transform: scale(1.1);
+}
 </style>

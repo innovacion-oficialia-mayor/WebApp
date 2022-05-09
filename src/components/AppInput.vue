@@ -13,7 +13,7 @@ export default {
 <template>
   <label :for="currentInput.id" class="app-input__label">
     <span class="app-input__span">{{ currentInput.labelText }}</span>
-    <input :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder">
+    <input :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder" required :pattern="currentInput.pattern ?? '.*'">
   </label>
 </template>
 
@@ -41,6 +41,11 @@ export default {
     color: var(--color-text);
     background-color: transparent;
     outline: 0;
+    transition: 250ms ease-in-out;
+  }
+
+  input:focus {
+    transform: scale(1.015);
   }
 
   ::placeholder {
@@ -48,7 +53,7 @@ export default {
     color: var(--color-text-mute);
   }
 
-  .app-input__input:invalid {
+  .app-input__input:invalid:not(:placeholder-shown) {
     border-color: var(--color-secundary-red);
     animation: shake 300ms;
   }

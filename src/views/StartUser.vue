@@ -35,7 +35,7 @@ export default {
         console.log(data);
         // validate the login form (this is just a prube)
         console.log(data.nomina, data.nominaConfirm);
-        data.nomina === '123' && data.nominaConfirm === data.nomina ? this.validated = true : this.validated = false;
+        data.nomina === '12345' && data.nominaConfirm === data.nomina ? this.validated = true : this.validated = false;
 
         if(this.validated){
           // function to redirect to the admin's dashboard
