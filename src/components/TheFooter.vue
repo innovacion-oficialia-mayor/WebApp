@@ -17,7 +17,6 @@ export default {
         <div class="footer__image">
             <app-link :to="{name: 'dashboard'}" class="footer__link">
                 <picture class="footer__logo-wrapper">
-                    <source srcset="@/assets/logo-big.png" media="(min-width: 600px)">
                     <img class="footer__logo" src="@/assets/logo.png" alt="imagen de celaya">
                 </picture>
             </app-link>
@@ -48,6 +47,8 @@ export default {
 
 .footer__image {
     width: 40%;
+    max-width: 200px;
+    min-width: 180px;
 }
 
 .footer__link {
