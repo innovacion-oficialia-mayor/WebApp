@@ -39,7 +39,7 @@ export default {
 </script>
 
 <template>
-
+  <!-- TODO: Accesibilidad y pseudoclases -->
   <router-link v-if="isRouterLink" class="app-button router__link" :class="[btnType, sizeType]" v-bind="$props">
     <slot></slot>
   </router-link>
@@ -135,20 +135,34 @@ button[class*="size"] {
   font-size: 1.4rem;
 }
 
+.size-large {
+  min-width: 140px;
+  max-width: 250px;
+  padding: 1.8rem;
+  font-size: 1.6rem;
+}
+
+.size-extralarge {
+  min-width: 250px;
+  max-width: 400px;
+  padding: 2rem;
+  font-size: 1.8rem;
+}
+
 /* Styles for router link */
-/* .router__link {
+.router__link {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 170px;
-  max-width: 400px;
+  /* min-width: 170px;
+  max-width: 400px; */
   padding: 10px 15px;
   text-align: center;
   font-size: 1.4rem;
   font-weight: 800;
   text-decoration: none;
   text-shadow: 4px 4px 12px rgba(255, 255, 255, 0.45);
-} */
+}
 
 
 </style>

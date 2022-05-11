@@ -1,10 +1,6 @@
 <script>
-import AppLink from '@/components/AppLink.vue';
 export default {
     name: 'CardPool',
-    components: {
-        'app-link': AppLink
-    },
     props: {
         imgpath: {
             type: String,
@@ -14,6 +10,10 @@ export default {
             type: Boolean,
             default: false
         },
+        toRoute: {
+            type: String,
+            required: true
+        }
     },
     computed: {
         isClassDesactive() {
@@ -35,7 +35,13 @@ export default {
             <p class="card__disclaimer">
                 <slot name="disclaimer"></slot>
             </p>
-            <app-link :to="{name: 'admin'}" :class="['card__access-link', isClassDesactive]" >Acceder</app-link>
+            <app-button
+            :to="{name:`${toRoute}`}"
+            colorBtn="rose"
+            typeStyle="fill"
+            sizeBtn="small" :class="['card__access-link', isClassDesactive]">
+                Acceder
+            </app-button>
         </div>
     </article>
 </template>
@@ -82,14 +88,11 @@ export default {
     }
 
     .card__access-link {
-        min-width: 100px;
-        max-width: 135px;
         margin-top: 9px;
-        font-size: 0.9rem;
+        font-size: 1rem;
         font-weight: 500;
         line-height: 1rem;
         border-radius: 5px;
-
     }
 
     .card__access-link.desactive {

@@ -20,8 +20,21 @@ export default {
         Elige sí eres administrador o servidor público para continuar
       </template>
       <template #actions>
-        <app-link :to="{name: 'admin'}" class="start__link">Soy Administrador</app-link>
-        <app-link :to="{name: 'user'}" class="start__link">Soy Servidor Público</app-link>
+         <app-button
+          :to="{name:'admin'}"
+          colorBtn="rose"
+          typeStyle="fill"
+          sizeBtn="large" class="start__link">
+            Soy Administrador
+          </app-button>
+
+          <app-button
+          :to="{name:'user'}"
+          colorBtn="rose"
+          typeStyle="fill"
+          sizeBtn="large" class="start__link">
+            Soy Servidor Público
+          </app-button>
       </template>
         <img class="start__logo" src="@/assets/logo.png" alt="Logo de Celaya">
     </the-start-item>
