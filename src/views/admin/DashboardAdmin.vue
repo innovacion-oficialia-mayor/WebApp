@@ -41,19 +41,21 @@ export default {
 
         <template #actions>
           <app-button
-          textBtn="Si, Salir"
           typeBtn="button"
           typeStyle="fill"
+          to=""
           colorBtn="blue"
           sizeBtn="medium">
+           Si, salir
           </app-button>
 
           <app-button
-          textBtn="Quedarme"
           typeBtn="button"
           typeStyle="fill"
+          to=""
           colorBtn="rose"
           sizeBtn="medium" @click="changeModalState">
+            Quedarme
           </app-button>
         </template>
       </the-modal>

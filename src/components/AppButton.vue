@@ -1,11 +1,9 @@
 <script>
+import {RouterLink} from 'vue-router';
+
 export default {
   name:'AppButton',
   props: {
-    textBtn: {
-      type: String,
-      default: 'Enviar',
-    },
     typeBtn: {
       type: String,
       default: 'button',
@@ -22,20 +20,33 @@ export default {
       type: String,
       default: 'fill',
     },
+     // get all the props from the router-link
+    ...RouterLink.props,
   },
   computed:{
+    isRouterLink(){
+      return this.to ? true : false;
+    },
+
     btnType(){
       return `${this.typeStyle}-${this.colorBtn}`;
     },
     sizeType(){
       return `size-${this.sizeBtn}`;
     }
-  }
+  },
 };
 </script>
 
 <template>
-  <button :type="typeBtn" class="app-button" :class="[btnType, sizeType]">{{textBtn}}</button>
+
+  <router-link v-if="isRouterLink" class="app-button router__link" :class="[btnType, sizeType]" v-bind="$props">
+    <slot></slot>
+  </router-link>
+
+  <button v-else :type="typeBtn" class="app-button" :class="[btnType, sizeType]">
+      <slot></slot>
+  </button>
 </template>
 
 <style scoped>
@@ -124,7 +135,20 @@ button[class*="size"] {
   font-size: 1.4rem;
 }
 
-
+/* Styles for router link */
+/* .router__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 170px;
+  max-width: 400px;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-shadow: 4px 4px 12px rgba(255, 255, 255, 0.45);
+} */
 
 
 </style>

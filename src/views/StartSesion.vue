@@ -3,7 +3,7 @@ import TheStartItem from '@/components/TheStartItem.vue';
 
 export default {
     name: "StartSesion",
-    components: { "the-start-item":TheStartItem }
+    components: { "the-start-item": TheStartItem }
 };
 </script>
 
