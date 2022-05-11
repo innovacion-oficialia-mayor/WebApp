@@ -16,7 +16,7 @@ export default {
         },
 
     }
-}
+};
 </script>
 
 <template>
@@ -78,7 +78,8 @@ export default {
     }
 
     .access__link {
-        width: 30%;
+        min-width: 100px;
+        max-width: 135px;
         margin-top: 9px;
         font-size: 0.9rem;
         font-weight: 500;

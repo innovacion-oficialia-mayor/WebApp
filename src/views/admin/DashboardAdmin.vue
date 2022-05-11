@@ -124,8 +124,8 @@ export default {
   .dashboard__content {
     display: grid;
     width: 93%;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin: 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    margin: 40px auto;
     gap: 16px;
   }
 
