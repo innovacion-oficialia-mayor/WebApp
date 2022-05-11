@@ -70,7 +70,7 @@ export default {
 
     <section class="dashboard__content">
 
-      <card-pool imgpath = "/src/assets/images/card-1.svg" active = "yes" >
+      <card-pool imgpath="/src/assets/images/card-1.svg" :active="true" >
         <template #title>
           Registro y consulta
         </template>
@@ -79,7 +79,7 @@ export default {
         </template>
       </card-pool>
 
-      <card-pool imgpath = "/src/assets/images/card-2.svg" active = "yes" >
+      <card-pool imgpath="/src/assets/images/card-2.svg" :active="true" >
         <template #title>
           Clima Laboral
         </template>
@@ -88,7 +88,7 @@ export default {
         </template>
       </card-pool>
 
-      <card-pool imgpath = "/src/assets/images/card-3.svg" active = "no">
+      <card-pool imgpath="/src/assets/images/card-3.svg" :active="false">
         <template #title>
           Norma 035
         </template>
@@ -97,7 +97,7 @@ export default {
         </template>
       </card-pool>
 
-      <card-pool imgpath = "/src/assets/images/card-3.svg" active = "no" >
+      <card-pool imgpath="/src/assets/images/card-3.svg" :active = "false" >
         <template #title>
           Evaluación de desempeño
         </template>

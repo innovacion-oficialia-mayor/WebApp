@@ -11,10 +11,14 @@ export default {
             required: true
         },
         active: {
-            type: String,
-
+            type: Boolean,
+            default: false
         },
-
+    },
+    computed: {
+        isClassDesactive() {
+            return this.active ? '' : 'desactive';
+        }
     }
 };
 </script>
@@ -31,7 +35,7 @@ export default {
             <p class="card__disclaimer">
                 <slot name="disclaimer"></slot>
             </p>
-            <app-link :to="{name: 'dashboard'}" class="access__link" :class="active" >Acceder</app-link>
+            <app-link :to="{name: 'admin'}" :class="['card__access-link', isClassDesactive]" >Acceder</app-link>
         </div>
     </article>
 </template>
@@ -77,7 +81,7 @@ export default {
         line-height: 1.65rem;
     }
 
-    .access__link {
+    .card__access-link {
         min-width: 100px;
         max-width: 135px;
         margin-top: 9px;
@@ -88,8 +92,9 @@ export default {
 
     }
 
-    .no {
+    .card__access-link.desactive {
         background-color: var(--color-unactive-rose);
+        pointer-events: none;
     }
 
 
