@@ -1,10 +1,6 @@
 <script>
-import AppLink from './AppLink.vue';
 export default {
     name: 'TheFooter',
-    components: {
-        'app-link': AppLink
-    },
 };
 </script>
 
@@ -15,11 +11,18 @@ export default {
             <p>Todos los derechos reservados</p>
         </div>
         <div class="footer__image">
-            <app-link :to="{name: 'dashboard'}" class="footer__link">
+            <!-- <app-link :to="{name: 'dashboard'}" class="footer__link">
                 <picture class="footer__logo-wrapper">
                     <img class="footer__logo" src="@/assets/logo.png" alt="imagen de celaya">
                 </picture>
-            </app-link>
+            </app-link> -->
+            <app-button
+            :to="{name:'dashboard'}"
+            typeStyle="no-style" class="footer__link">
+                <picture class="footer__logo-wrapper">
+                    <img class="footer__logo" src="@/assets/logo.png" alt="Imagen de celaya">
+                </picture>
+            </app-button>
         </div>
     </footer>
 </template>
@@ -52,14 +55,7 @@ export default {
 }
 
 .footer__link {
-    display: block;
-    min-width: auto;
-    max-width: none;
     padding: 0;
-    border: 0;
-    border-radius: 0;
-    background-color: transparent;
-    cursor: pointer;
 }
 
 .footer__logo-wrapper {
