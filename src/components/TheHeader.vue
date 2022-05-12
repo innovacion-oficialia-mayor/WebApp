@@ -8,8 +8,12 @@ export default {
   <header class="the-header">
       <app-button
       :to="{name:'dashboard'}"
+<<<<<<< HEAD
       typeStyle="no-style"
       class="the-header__app-button">
+=======
+      typeStyle="no-style">
+>>>>>>> ca5162c700e3b891932f7bb5171ca70cf28a099a
           <picture class="the-header__logo-wrapper">
           <!-- <source media="(min-width: )" srcset=""> -->
             <img src="@/assets/images/logo-small.png" alt="Logo de Celaya" class="the-header__logo">
