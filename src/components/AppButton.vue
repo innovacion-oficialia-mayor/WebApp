@@ -29,10 +29,12 @@ export default {
     },
 
     btnType(){
-      return `${this.typeStyle}-${this.colorBtn}`;
+
+      return this.typeStyle !== 'no-style' ? `${this.typeStyle}-${this.colorBtn}` : '';
     },
+
     sizeType(){
-      return `size-${this.sizeBtn}`;
+      return this.typeStyle !== 'no-style' ? `size-${this.sizeBtn}` : '';
     }
   },
 };

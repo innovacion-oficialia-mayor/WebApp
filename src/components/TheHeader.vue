@@ -1,19 +1,20 @@
 <script>
-import AppLink from "./AppLink.vue";
 export default {
     name: "TheHeader",
-    components: { AppLink }
 };
 </script>
 
 <template>
   <header class="the-header">
-    <app-link :to="{name: 'dashboard'}" class="the-header__app-link">
-        <picture class="the-header__logo-wrapper">
+      <app-button
+      :to="{name:'dashboard'}"
+      typeStyle="no-style"
+      class="the-header__app-button">
+          <picture class="the-header__logo-wrapper">
           <!-- <source media="(min-width: )" srcset=""> -->
-          <img src="@/assets/images/logo-small.png" alt="Logo de Celaya" class="the-header__logo">
-        </picture>
-      </app-link>
+            <img src="@/assets/images/logo-small.png" alt="Logo de Celaya" class="the-header__logo">
+          </picture>
+      </app-button>
       <h2 class="the-header__title">
           <slot name="text"></slot>
       </h2>
@@ -22,7 +23,6 @@ export default {
       </div>
       <slot></slot>
   </header>
-
 </template>
 
 <style scoped>
@@ -38,11 +38,8 @@ export default {
     background-color: #fff;
     color: var(--color-background);
   }
-  .the-header__app-link {
-    background-color: transparent;
-    border-radius: auto;
-    max-width: none;
-    min-width: auto;
+
+  .the-header__app-button {
     padding: 0;
   }
 
