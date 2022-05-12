@@ -72,7 +72,7 @@ export default {
 
     <section class="dashboard__content">
 
-      <card-pool imgpath="/src/assets/images/card-1.svg" :active="true" toRoute="admin">
+      <card-pool imgpath="/src/assets/images/card-1.svg" :active="true" toRoute="register">
         <template #title>
           Registro y consulta
         </template>
@@ -81,7 +81,7 @@ export default {
         </template>
       </card-pool>
 
-      <card-pool imgpath="/src/assets/images/card-2.svg" :active="true" toRoute="admin">
+      <card-pool imgpath="/src/assets/images/card-2.svg" :active="true" toRoute="clima">
         <template #title>
           Clima Laboral
         </template>

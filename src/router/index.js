@@ -28,6 +28,16 @@ const routes = [
     path: '/admin/dashboard',
     name: 'dashboard',
     component: () => import('@/views/admin/DashboardAdmin.vue')
+  },
+  {
+    path: '/admin/register',
+    name: 'register',
+    component: () => import('@/views/admin/RegisterAdmin.vue')
+  },
+  {
+    path: '/admin/clima',
+    name: 'clima',
+    component: () => import('@/views/admin/ClimaAdmin.vue')
   }
 ];
 
