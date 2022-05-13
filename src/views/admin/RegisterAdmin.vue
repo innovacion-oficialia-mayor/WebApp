@@ -3,8 +3,12 @@ import userData from '@/data.json';
 import TheMenu from '@/components/TheMenu.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import IconBase from '@/components/IconBase.vue';
+<<<<<<< Updated upstream
 import CardUser from '@/components/CardUser.vue';
 import TheFooter from '@/components/TheFooter.vue';
+=======
+import TheModal from '@/components/TheModal.vue';
+>>>>>>> Stashed changes
 
 export default {
   name: 'RegsiterAdmin',
@@ -12,8 +16,12 @@ export default {
     'the-menu':TheMenu,
     "the-header": TheHeader,
     "icon-base":IconBase,
+<<<<<<< Updated upstream
     'card-user': CardUser,
     'the-footer': TheFooter,
+=======
+    "the-modal":TheModal
+>>>>>>> Stashed changes
   },
   data(){
     return {
@@ -25,6 +33,29 @@ export default {
 </script>
 
 <template>
+  <Teleport to="body">
+      <the-modal srcImage="/src/assets/images/modal-logout.svg" :isOpen="isModalOpen">
+        <template #message>Selecciona la dependencia para ver los empleados</template>
+
+        <template #actions>
+          <app-button
+          typeBtn="button"
+          typeStyle="fill"
+          colorBtn="blue"
+          sizeBtn="medium">
+           Si, salir
+          </app-button>
+
+          <app-button
+          typeBtn="button"
+          typeStyle="fill"
+          colorBtn="rose"
+          sizeBtn="medium" @click="changeModalState">
+            Quedarme
+          </app-button>
+        </template>
+      </the-modal>
+  </Teleport>
   <the-header>
       <template #text>
         Registro y Consulta
