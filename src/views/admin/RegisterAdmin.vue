@@ -1,5 +1,5 @@
 <script>
-import userData from '@/data.json'
+import userData from '@/data.json';
 import TheMenu from '@/components/TheMenu.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import IconBase from '@/components/IconBase.vue';
@@ -21,7 +21,7 @@ export default {
       users: userData.users
     };
   },
-}
+};
 </script>
 
 <template>
@@ -56,6 +56,7 @@ export default {
   .register__content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    justify-content: center;
     margin: 15px 0;
   }
 </style>
