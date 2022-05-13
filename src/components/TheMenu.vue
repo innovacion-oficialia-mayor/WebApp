@@ -83,11 +83,12 @@ export default {
 <style scoped>
 .the-menu__container {
   width: 100%;
+  height: 100%;
   padding: 25px 10px;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
-  height: 100%;
   transform: translateY(-110%);
   transition: transform 500ms ease-in;
   background-color: var(--color-back-modal);
