@@ -83,8 +83,8 @@ export default {
 <style scoped>
 .the-menu__container {
   width: 100%;
-  padding: 25px 0;
-  position: absolute;
+  padding: 25px 10px;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -118,6 +118,10 @@ export default {
   object-fit: cover;
 }
 
+.the-menu__admin-info {
+  color: var(--color-text);
+}
+
 .the-menu__list {
   padding: 0;
   margin: 30px 0;
@@ -145,11 +149,12 @@ export default {
 .the-menu__container > .the-menu__icon-base {
   width: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   right: 5%;
 }
 
 .the-menu__item-text {
   margin-left: 10px;
+  font-size: 1.6rem;
 }
 </style>
