@@ -11,15 +11,6 @@ export default {
       type: String,
       default: 'white',
     },
-    width: {
-      type: String,
-      default: '24',
-    },
-    height: {
-      type: String,
-      default: '24',
-    },
-
     role:{
       type: String,
       default: 'icon',
@@ -27,17 +18,23 @@ export default {
   },
   computed: {
     svgPath(){
-      return ICONS[this.name];
+      return ICONS[this.name].path;
+    },
+    svgWidth(){
+      return ICONS[this.name].width;
+    },
+    svgHeight(){
+      return ICONS[this.name].height;
     },
     svgViewBox(){
-      return `0 0 ${this.width} ${this.height}`;
+      return `0 0 ${this.svgWidth} ${this.svgHeight}`;
     }
   }
 };
 </script>
 
 <template>
-    <svg :width="width" :height="height" :viewBox="svgViewBox" fill="none" xmlns="http://www.w3.org/2000/svg" :role="role">
+    <svg :width="svgWidth" :height="svgHeight" :viewBox="svgViewBox" fill="none" xmlns="http://www.w3.org/2000/svg" :role="role">
       <path :d="svgPath" :fill="color"/>
     </svg>
 </template>
