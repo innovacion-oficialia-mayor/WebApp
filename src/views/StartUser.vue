@@ -57,7 +57,7 @@ export default {
 </script>
 
 <template>
-   <main class="start__main">
+   <main class="start__user-main">
     <the-start-item>
       <template #image>
         <img class="start__image" src="@/assets/images/start-user.svg" alt="Imagen de bienvenida para el servidor publico">
@@ -77,6 +77,9 @@ export default {
 </template>
 
 <style scoped>
+.start__user-main {
+  width: 100%;
+}
 .start__image, .start__logo {
   width: 100%;
   height: 100%;

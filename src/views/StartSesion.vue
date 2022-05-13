@@ -45,8 +45,6 @@ export default {
 
 .start__main {
   width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 .start__image, .start__logo {

@@ -78,8 +78,6 @@ export default {
 <style scoped>
   .start-admin__main {
     width: 100%;
-    min-width: 320px;
-    min-height: 100vh;
   }
   .start__image, .start__logo {
     width: 100%;
