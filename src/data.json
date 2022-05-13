@@ -1,0 +1,36 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "activo": true,
+            "name": "Juan José Ramírez López",
+            "email": "juan.ramirez@celaya.gob.mx",
+            "nomina": "00001",
+            "dependencia": "Oficialía Mayor"
+        },
+        {
+            "id": 2,
+            "activo": true,
+            "name": "Francisco Javier Solís Martínez",
+            "email": "francisco.solis@celaya.gob.mx",
+            "nomina": "00017",
+            "dependencia": "Innovación"
+        },
+        {
+            "id": 3,
+            "activo": false,
+            "name": "Ricardo García Jiménez",
+            "email": "ricardo.garcia@celaya.gob.mx",
+            "nomina": "66666",
+            "dependencia": "Servicios Municipales"
+        },
+        {
+            "id": 4,
+            "activo": true,
+            "name": "María Florentina Ramírez Juárez",
+            "email": "flor.ramirez@celaya.gob.mx",
+            "nomina": "43678",
+            "dependencia": "Oficialía Mayor"
+        }
+    ]
+}
