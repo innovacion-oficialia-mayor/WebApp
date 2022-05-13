@@ -83,7 +83,7 @@ export default {
 <style scoped>
 .the-menu__container {
   width: 100%;
-  padding: 25px 0;
+  padding: 25px 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -145,7 +145,7 @@ export default {
 .the-menu__container > .the-menu__icon-base {
   width: 15px;
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   right: 5%;
 }
 
