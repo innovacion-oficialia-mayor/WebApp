@@ -27,8 +27,8 @@ export default {
       <template #action>
         <icon-base name="menu" color="#1B1A2F" width="72" height="48" role="button" @click="isMenuOpen = !isMenuOpen"></icon-base>
       </template>
+      <the-menu v-model="isMenuOpen"></the-menu>
   </the-header>
-  <the-menu v-model="isMenuOpen"></the-menu>
 </template>
 
 <style scoped>

@@ -84,7 +84,7 @@ export default {
 .the-menu__container {
   width: 100%;
   padding: 25px 10px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
@@ -116,6 +116,10 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.the-menu__admin-info {
+  color: var(--color-text);
 }
 
 .the-menu__list {
@@ -151,5 +155,6 @@ export default {
 
 .the-menu__item-text {
   margin-left: 10px;
+  font-size: 1.6rem;
 }
 </style>
