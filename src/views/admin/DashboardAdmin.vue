@@ -66,7 +66,7 @@ export default {
         Adminsitración
       </template>
       <template #action>
-        <icon-base name="logout" color="#1B1A2F" width="30" height="30" role="button" @click="changeModalState"></icon-base>
+        <icon-base name="logout" color="#1B1A2F" role="button" @click="changeModalState"></icon-base>
       </template>
     </the-header>
 
@@ -116,8 +116,6 @@ export default {
 <style scoped>
   .dashboard__container {
     width: 100%;
-    min-width: 320px;
-    min-height: 100vh;
   }
   svg {
     width: 25px;

@@ -55,7 +55,7 @@ export default {
   }
 
   .the-header__title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 800;
   }
 

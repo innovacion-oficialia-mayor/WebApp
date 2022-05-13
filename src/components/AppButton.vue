@@ -63,7 +63,7 @@ export default {
   cursor: pointer;
 }
 
-.app-button:active{
+button:active{
   transform: scale(1.1);
 }
 
