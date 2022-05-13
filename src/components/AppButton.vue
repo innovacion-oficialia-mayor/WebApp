@@ -115,6 +115,7 @@ button[class*="unfill"] {
 
 .unfill-red {
   color: var(--color-secundary-red);
+  border: 2px solid var(--color-secundary-red);
 }
 
 /* Size buttons */
