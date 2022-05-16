@@ -18,7 +18,7 @@ export default {
         }
     }
 
-}
+};
 </script>
 
 <template>
@@ -70,11 +70,9 @@ export default {
 
 <style scoped>
     .card__container {
-        width: 80%;
+        width: 100%;
         display: flex;
         flex-direction: column;
-        max-width: 380px;
-        margin: 15px auto;
         background-color: var(--color-back-modal);
     }
     .card__info {
