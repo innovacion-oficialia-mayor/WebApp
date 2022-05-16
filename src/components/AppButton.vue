@@ -1,5 +1,8 @@
 <script>
 import {RouterLink} from 'vue-router';
+// change router link to prop to requiere false
+RouterLink.props.to.required = false;
+const propsRouter = RouterLink.props;
 
 export default {
   name:'AppButton',
@@ -21,7 +24,7 @@ export default {
       default: 'fill',
     },
      // get all the props from the router-link
-    ...RouterLink.props,
+    ...propsRouter,
   },
   computed:{
     isRouterLink(){
@@ -29,7 +32,6 @@ export default {
     },
 
     btnType(){
-
       return this.typeStyle !== 'no-style' ? `${this.typeStyle}-${this.colorBtn}` : '';
     },
 
