@@ -43,7 +43,6 @@ export default {
           <app-button
           typeBtn="button"
           typeStyle="fill"
-          to=""
           colorBtn="blue"
           sizeBtn="medium">
            Si, salir
@@ -52,7 +51,6 @@ export default {
           <app-button
           typeBtn="button"
           typeStyle="fill"
-          to=""
           colorBtn="rose"
           sizeBtn="medium" @click="changeModalState">
             Quedarme

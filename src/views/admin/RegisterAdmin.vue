@@ -3,12 +3,10 @@ import userData from '@/data.json';
 import TheMenu from '@/components/TheMenu.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import IconBase from '@/components/IconBase.vue';
-<<<<<<< Updated upstream
 import CardUser from '@/components/CardUser.vue';
 import TheFooter from '@/components/TheFooter.vue';
-=======
 import TheModal from '@/components/TheModal.vue';
->>>>>>> Stashed changes
+import AppForm from '@/components/AppForm.vue';
 
 export default {
   name: 'RegsiterAdmin',
@@ -16,43 +14,82 @@ export default {
     'the-menu':TheMenu,
     "the-header": TheHeader,
     "icon-base":IconBase,
-<<<<<<< Updated upstream
     'card-user': CardUser,
     'the-footer': TheFooter,
-=======
-    "the-modal":TheModal
->>>>>>> Stashed changes
+    "the-modal":TheModal,
+    "app-form":AppForm
   },
   data(){
     return {
       isMenuOpen: false,
-      users: userData.users
+      users: userData.users,
+      inputsList: [
+        {
+          id: 1,
+          type:'list',
+          listName: 'dependencesType',
+          options: ['Centralizada', 'Descentralizada'], //cargar las opciones con la API
+          labelText: 'Tipo de dependencia',
+          name: 'dependenceType',
+          placeholder:'Tipo de dependencia',
+        },
+        {
+          id: 2,
+          type:'list',
+          listName: 'dependences',
+          options: ['Oficilia Mayor', 'Servicios municipales', 'Recursos Humanos'], //cargar las opciones con la API desde la pinia store
+          labelText: 'Dependencia',
+          name: 'dependence',
+          placeholder:'Selecciona dependencia',
+        },
+        {
+          id: 3,
+          type:'list',
+          listName: 'list',
+          options: ['Innovación', 'Transito municipal', 'Vialidad'], //cargar las opciones con la API desde la pinia store
+          labelText: 'Area',
+          name: 'area',
+          placeholder:'Selecciona area (si existe)',
+        }
+      ],
+      isModalOpen: false,
     };
+  },
+  methods:{
+    handlerSubmit(e){
+        const data = Object.fromEntries(new FormData(e.target));
+        console.log(data);
+        // validate selected options
+
+    },
+    changeModalState(){
+      this.isModalOpen = !this.isModalOpen;
+    },
+  },
+  mounted() {
+    this.changeModalState();
   },
 };
 </script>
 
 <template>
   <Teleport to="body">
-      <the-modal srcImage="/src/assets/images/modal-logout.svg" :isOpen="isModalOpen">
+      <the-modal srcImage="/src/assets/images/choose-dep.svg" :isOpen="isModalOpen">
         <template #message>Selecciona la dependencia para ver los empleados</template>
 
         <template #actions>
-          <app-button
-          typeBtn="button"
-          typeStyle="fill"
-          colorBtn="blue"
-          sizeBtn="medium">
-           Si, salir
-          </app-button>
-
-          <app-button
-          typeBtn="button"
-          typeStyle="fill"
-          colorBtn="rose"
-          sizeBtn="medium" @click="changeModalState">
-            Quedarme
-          </app-button>
+          <app-form
+            :inputsList="inputsList" submitText="Continuar" submitSize="medium" @submit.prevent="handlerSubmit">
+             <template #extra-button>
+                <app-button
+                typeBtn="button"
+                typeStyle="fill"
+                colorBtn="blue"
+                sizeBtn="medium" @click="changeModalState">
+                  Volver
+                </app-button>
+            </template>
+          </app-form>
         </template>
       </the-modal>
   </Teleport>

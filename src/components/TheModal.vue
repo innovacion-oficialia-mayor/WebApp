@@ -30,13 +30,13 @@ export default {
 <template>
   <div class="the-modal__container">
     <dialog class="the-modal__dialog" ref="dialog">
-      <figure class="the-modal__image-wrapper">
+      <figure class="the-modal__image-wrapper" v-if="srcImage">
         <img :src="srcImage" alt="Imagen del modal" class="the-modal__image">
       </figure>
       <p class="the-modal__message">
         <slot name="message"></slot>
       </p>
-      <slot name="form"></slot>
+
       <div class="the-modal__actions">
         <slot name="actions"></slot>
       </div>
@@ -45,7 +45,7 @@ export default {
 </template>
 
 <style scoped>
-.the-modal__dialog{
+.the-modal__dialog {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -55,6 +55,7 @@ export default {
   border: 0;
   padding: 20px;
   border-radius: 8px;
+  min-height: 64px;
 }
 
 .the-modal__dialog::backdrop {
@@ -63,6 +64,7 @@ export default {
 
 .the-modal__image-wrapper {
   width: 80%;
+  max-width: 250px;
   margin: 0 auto;
 }
 .the-modal__image{
