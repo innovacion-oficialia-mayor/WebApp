@@ -13,7 +13,13 @@ export default {
 <template>
   <label :for="currentInput.id" class="app-input__label">
     <span class="app-input__span">{{ currentInput.labelText }}</span>
-    <input :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder" required :pattern="currentInput.pattern ?? '.*'">
+    <input v-if="currentInput.type !== 'list'" :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder" required :pattern="currentInput.pattern ?? '.*'">
+
+    <input v-else :list="currentInput.listName" :name="currentInput.name" :id="currentInput.id" class="app-input__input-list" :placeholder="currentInput.placeholder">
+    <datalist :id="currentInput.listName">
+      <option v-for="(option, index) in currentInput.options" :key="index" :value="option"/>
+    </datalist>
+
   </label>
 </template>
 
@@ -30,9 +36,10 @@ export default {
     font-size: 1.3rem;
     text-align: left;
     margin-bottom: 5px;
+    color: var(--color-text);
   }
 
-  .app-input__input {
+  .app-input__input, .app-input__input-list {
     width: 100%;
     font-size: 1.3rem;
     border: 2px solid var(--color-primary-rose);
