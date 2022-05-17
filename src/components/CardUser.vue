@@ -61,7 +61,7 @@ export default {
             colorBtn="red"
             typeStyle="unfill"
             sizeBtn="medium" :class="['card__edit-link', isUserDesactive]"
-            v-else>
+            v-else @click="$emit('user-change')">
                 Dar de alta
             </app-button>
         </div>
