@@ -57,6 +57,7 @@ export default {
 
 .app-button {
   padding: 5px;
+  font-family: "Roboto Mono", monospace;
   font-size: 1.2rem;
   border-radius: 12px;
   color: var(--color-text);
@@ -163,7 +164,6 @@ button[class*="size"] {
   max-width: 400px; */
   padding: 10px 15px;
   text-align: center;
-  font-size: 1.4rem;
   font-weight: 800;
   text-decoration: none;
   text-shadow: 4px 4px 12px rgba(255, 255, 255, 0.45);

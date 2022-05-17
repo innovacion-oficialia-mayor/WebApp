@@ -90,6 +90,10 @@ export default {
     passModalState(){
       this.passModalOpen = !this.passModalOpen;
     },
+    makeScroll(){
+      console.log(window.scrollTo);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   },
   mounted() {
     this.changeModalState();
@@ -98,6 +102,7 @@ export default {
 </script>
 
 <template>
+  <!-- First modal to select dependecies -->
   <Teleport to="body">
       <the-modal srcImage="/src/assets/images/choose-dep.svg" :isOpen="isModalOpen">
         <template #message>Selecciona la dependencia para ver los empleados</template>
@@ -119,7 +124,7 @@ export default {
       </the-modal>
   </Teleport>
 
-    <!--Segundo modal para dar de baja-->
+    <!-- Second modal to unsubscribe users -->
     <Teleport to="body">
       <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="passModalOpen">
         <template #message>Ingresa tu contraseña para continuar</template>
@@ -141,30 +146,49 @@ export default {
       </the-modal>
   </Teleport>
 
+  <!-- button with icon to rregister a new user -->
+
+  <!-- header -->
   <the-header>
       <template #text>
         Registro y Consulta
       </template>
       <template #action>
-        <icon-base name="menu" color="#1B1A2F" width="72" height="48" role="button" @click="isMenuOpen = !isMenuOpen"></icon-base>
+        <icon-base name="menu" color="#1B1A2F"  role="button" @click="isMenuOpen = !isMenuOpen"></icon-base>
       </template>
       <the-menu v-model="isMenuOpen"></the-menu>
   </the-header>
 
+  <!-- change dependencies button and searcher -->
   <section class="register__search-set">
     <div class="register__info">
       <p class="register__stats">Oficilia Mayor (321)</p>
-      <app-button
+      <div class="register__actions">
+         <app-button
         typeBtn="button"
         typeStyle="fill"
         colorBtn="rose"
         sizeBtn="small"
-        @click="changeModalState" >
+        @click="changeModalState" class="register__button-link" >
             Cambiar dependencia
         </app-button>
+        <app-button
+          :to="{name:'addUser'}"
+          colorBtn="green"
+          typeStyle="fill"
+          sizeBtn="small" class="register__button-link">
+            <!-- <icon-base
+              name="addUser"
+              color="#fff"
+              role="button">
+            </icon-base> -->
+            Agregar usuario
+        </app-button>
+      </div>
     </div>
   </section>
 
+  <!-- Content where the users loading -->
   <section class="register__content">
     <card-user toRoute="admin"
     :userActive="user.activo"
@@ -177,7 +201,14 @@ export default {
       <template #status v-if="user.activo"> Activo </template>
       <template #status v-else> Inactivo </template>
     </card-user>
+
   </section>
+
+  <!-- icon to go up again -->
+  <div class="register__to-up">
+    <icon-base name="arrowUp" color="#fff" role="button" @click="makeScroll"></icon-base>
+  </div>
+  <!-- footer -->
   <the-footer></the-footer>
 </template>
 
@@ -197,12 +228,51 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
+
+  .register__stats {
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  .register__actions {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .register__actions > .register__button-link:first-child {
+    margin-right: 15px;
+  }
+
+  .register__button-link {
+    padding: 0.9rem;
+    line-height: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
   .register__content {
     width: 90%;
-    margin: 15px auto;
+    margin: 30px auto;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center;
     gap: 25px 20px;
   }
+
+  .register__to-up {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    right: 5px;
+    bottom: 90px;
+    z-index: 2;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+
 </style>
