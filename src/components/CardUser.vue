@@ -53,7 +53,7 @@ export default {
             colorBtn="red"
             typeStyle="unfill"
             sizeBtn="medium" :class="['card__edit-link', isUserDesactive]"
-            v-if="userActive">
+            v-if="userActive" @click="$emit('user-change')">
                 Dar de baja
             </app-button>
             <app-button

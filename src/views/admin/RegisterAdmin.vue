@@ -52,18 +52,43 @@ export default {
           placeholder:'Selecciona area (si existe)',
         }
       ],
+      passInputsList: [
+        {
+          id:4,
+          type:'password',
+          labelText: 'Contraseña',
+          name: 'password',
+          placeholder:'Contraseña',
+        },
+        {
+          id:5,
+          type:'password',
+          labelText: 'Confirmar contraseña',
+          name: 'passwordConfirm',
+          placeholder:'Cponfirmar contraseña',
+        },
+      ],
       isModalOpen: false,
+      passModalOpen: false,
     };
   },
   methods:{
-    handlerSubmit(e){
+    handlerFilterSubmit(e){
         const data = Object.fromEntries(new FormData(e.target));
         console.log(data);
         // validate selected options
 
     },
+    handlerConfirmSubmit(e){
+      const data = Object.fromEntries(new FormData(e.target));
+      console.log(data);
+      // validate the password before an action
+    },
     changeModalState(){
       this.isModalOpen = !this.isModalOpen;
+    },
+    passModalState(){
+      this.passModalOpen = !this.passModalOpen;
     },
   },
   mounted() {
@@ -79,7 +104,7 @@ export default {
 
         <template #actions>
           <app-form
-            :inputsList="inputsList" submitText="Continuar" submitSize="medium" @submit.prevent="handlerSubmit">
+            :inputsList="inputsList" submitText="Continuar" submitSize="medium" @submit.prevent="handlerFilterSubmit">
              <template #extra-button>
                 <app-button
                 typeBtn="button"
@@ -93,6 +118,29 @@ export default {
         </template>
       </the-modal>
   </Teleport>
+
+    <!--Segundo modal para dar de baja-->
+    <Teleport to="body">
+      <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="passModalOpen">
+        <template #message>Ingresa tu contraseña para continuar</template>
+
+        <template #actions>
+          <app-form
+            :inputsList="passInputsList" submitText="Confirmar" submitSize="medium" @submit.prevent="handlerConfirmSubmit">
+             <template #extra-button>
+                <app-button
+                typeBtn="button"
+                typeStyle="fill"
+                colorBtn="blue"
+                sizeBtn="medium" @click="passModalState">
+                  Volver
+                </app-button>
+            </template>
+          </app-form>
+        </template>
+      </the-modal>
+  </Teleport>
+
   <the-header>
       <template #text>
         Registro y Consulta
@@ -104,7 +152,10 @@ export default {
   </the-header>
 
   <section class="register__content">
-    <card-user toRoute="admin" :userActive="user.activo" v-for="user in users" :key="user.id">
+    <card-user toRoute="admin"
+    :userActive="user.activo"
+    v-for="user in users" :key="user.id"
+    @user-change="passModalState">
       <template #username> {{user.name}} </template>
       <template #email> {{user.email}} </template>
       <template #nomina> Nómina: {{user.nomina}} </template>
