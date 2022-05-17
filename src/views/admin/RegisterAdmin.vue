@@ -151,6 +151,20 @@ export default {
       <the-menu v-model="isMenuOpen"></the-menu>
   </the-header>
 
+  <section class="register__search-set">
+    <div class="register__info">
+      <p class="register__stats">Oficilia Mayor (321)</p>
+      <app-button
+        typeBtn="button"
+        typeStyle="fill"
+        colorBtn="rose"
+        sizeBtn="small"
+        @click="changeModalState" >
+            Cambiar dependencia
+        </app-button>
+    </div>
+  </section>
+
   <section class="register__content">
     <card-user toRoute="admin"
     :userActive="user.activo"
@@ -172,10 +186,23 @@ export default {
   svg {
     width: 20px;
   }
+
+  .register__search-set {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .register__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   .register__content {
+    width: 90%;
+    margin: 15px auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-content: center;
-    margin: 15px 0;
+    gap: 25px 20px;
   }
 </style>
