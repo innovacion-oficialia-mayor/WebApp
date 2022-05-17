@@ -30,15 +30,22 @@ const routes = [
     component: () => import('@/views/admin/DashboardAdmin.vue')
   },
   {
-    path: '/admin/register',
+    path: '/admin/dashboard/register',
     name: 'register',
     component: () => import('@/views/admin/RegisterAdmin.vue')
   },
+
   {
-    path: '/admin/clima',
+    path: '/admin/dashboard/register/addUser',
+    name: 'addUser',
+    component: () => import('@/views/admin/AddUser.vue')
+  },
+
+  {
+    path: '/admin/dashboard/clima',
     name: 'clima',
     component: () => import('@/views/admin/ClimaAdmin.vue')
-  }
+  },
 ];
 
 // create routes and history
