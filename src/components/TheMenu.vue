@@ -86,7 +86,7 @@ export default {
   height: 100%;
   padding: 25px 10px;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   left: 0;
   transform: translateY(-110%);

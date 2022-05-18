@@ -17,7 +17,7 @@ export default {
     'card-user': CardUser,
     'the-footer': TheFooter,
     "the-modal":TheModal,
-    "app-form":AppForm
+    "app-form":AppForm,
   },
   data(){
     return {
@@ -69,7 +69,7 @@ export default {
         },
       ],
       isModalOpen: false,
-      passModalOpen: false,
+      isPassModalOpen: false,
     };
   },
   methods:{
@@ -88,10 +88,9 @@ export default {
       this.isModalOpen = !this.isModalOpen;
     },
     passModalState(){
-      this.passModalOpen = !this.passModalOpen;
+      this.isPassModalOpen = !this.isPassModalOpen;
     },
     makeScroll(){
-      console.log(window.scrollTo);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   },
@@ -126,7 +125,7 @@ export default {
 
     <!-- Second modal to unsubscribe users -->
     <Teleport to="body">
-      <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="passModalOpen">
+      <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="isPassModalOpen">
         <template #message>Ingresa tu contraseña para continuar</template>
 
         <template #actions>
@@ -161,6 +160,9 @@ export default {
 
   <!-- change dependencies button and searcher -->
   <section class="register__search-set">
+    <!-- FIXME: This will replace for a component or for a diffeerent structure -->
+    <input type="text" aria-label="search" placeholder="Buscar..." class="register__search-input">
+
     <div class="register__info">
       <p class="register__stats">Oficilia Mayor (321)</p>
       <div class="register__actions">
@@ -177,11 +179,6 @@ export default {
           colorBtn="green"
           typeStyle="fill"
           sizeBtn="small" class="register__button-link">
-            <!-- <icon-base
-              name="addUser"
-              color="#fff"
-              role="button">
-            </icon-base> -->
             Agregar usuario
         </app-button>
       </div>
@@ -201,7 +198,6 @@ export default {
       <template #status v-if="user.activo"> Activo </template>
       <template #status v-else> Inactivo </template>
     </card-user>
-
   </section>
 
   <!-- icon to go up again -->
@@ -262,6 +258,7 @@ export default {
     gap: 25px 20px;
   }
 
+  /* control to back up */
   .register__to-up {
     width: 30px;
     height: 30px;
@@ -273,6 +270,19 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .register__search-input {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    border: 2px solid var(--color-primary-rose);
+    border-radius: 8px;
+    padding: 12px 8px;
+    color: var(--color-text);
+    background-color: transparent;
+    outline: 0;
+    transition: 250ms ease-in-out;
   }
 
 </style>
