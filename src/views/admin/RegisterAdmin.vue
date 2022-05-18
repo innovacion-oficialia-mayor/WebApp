@@ -8,6 +8,22 @@ import TheFooter from '@/components/TheFooter.vue';
 import TheModal from '@/components/TheModal.vue';
 import AppForm from '@/components/AppForm.vue';
 
+// function debounce for scroll
+function debounce(func, wait = 20, immediate = true) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
 export default {
   name: 'RegsiterAdmin',
   components: {
@@ -22,6 +38,9 @@ export default {
   data(){
     return {
       isMenuOpen: false,
+      isModalOpen: false,
+      isPassModalOpen: false,
+      isArrowUpVisible: false,
       users: userData.users,
       inputsList: [
         {
@@ -68,11 +87,10 @@ export default {
           placeholder:'Cponfirmar contraseña',
         },
       ],
-      isModalOpen: false,
-      isPassModalOpen: false,
     };
   },
   methods:{
+    // handlers
     handlerFilterSubmit(e){
         const data = Object.fromEntries(new FormData(e.target));
         console.log(data);
@@ -84,6 +102,11 @@ export default {
       console.log(data);
       // validate the password before an action
     },
+    handleScroll(){
+      const POINT_OF_VIEW = 160;
+      window.scrollY > POINT_OF_VIEW ? this.isArrowUpVisible = true : this.isArrowUpVisible = false;
+    },
+    // change state functions
     changeModalState(){
       this.isModalOpen = !this.isModalOpen;
     },
@@ -96,7 +119,20 @@ export default {
   },
   mounted() {
     this.changeModalState();
+    this.handleDebouncedScroll = debounce(this.handleScroll, 80);
+    window.addEventListener('scroll', this.handleDebouncedScroll);
   },
+
+  beforeUnmount(){
+    window.removeEventListener('scroll', this.handleDebouncedScroll);
+  },
+
+  computed: {
+    // computed properties
+    arrowUpClass(){
+      return this.isArrowUpVisible ? 'visible' : '';
+    }
+  }
 };
 </script>
 
@@ -201,8 +237,10 @@ export default {
   </section>
 
   <!-- icon to go up again -->
-  <div class="register__to-up">
-    <icon-base name="arrowUp" color="#fff" role="button" @click="makeScroll"></icon-base>
+  <div class="register__wrapper-to-up">
+    <div :class="['register__to-up', arrowUpClass]">
+      <icon-base name="arrowUp" color="#fff" role="button" @click="makeScroll"></icon-base>
+    </div>
   </div>
   <!-- footer -->
   <the-footer></the-footer>
@@ -214,6 +252,7 @@ export default {
     width: 20px;
   }
 
+  /* section to do some actions and search */
   .register__search-set {
     width: 90%;
     margin: 20px auto;
@@ -248,6 +287,7 @@ export default {
     font-size: 1.1rem;
   }
 
+  /* section where it showed the users's cards */
   .register__content {
     width: 90%;
     margin: 30px auto;
@@ -259,19 +299,41 @@ export default {
   }
 
   /* control to back up */
+  .register__wrapper-to-up{
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    visibility: hidden;
+  }
+
   .register__to-up {
     width: 30px;
     height: 30px;
-    position: fixed;
-    right: 5px;
-    bottom: 90px;
-    z-index: 2;
+    margin-right: 5px;
+    position: relative;
     display: inline-flex;
     justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
     align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+    visibility: hidden;
+    opacity: 0;
     background-color: rgba(0, 0, 0, 0.35);
   }
 
+  .register__to-up.visible {
+    visibility: visible;
+    opacity: 1;
+    margin-bottom: 76px;
+  }
+
+  /* searcher, maybe this may be deleated */
   .register__search-input {
     width: 100%;
     margin: 20px 0;

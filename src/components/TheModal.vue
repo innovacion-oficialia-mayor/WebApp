@@ -13,9 +13,13 @@ export default {
   },
   methods: {
     closeModal(){
-       this.$refs.dialog.close();
+      this.$refs.dialog.close();
+      // active scroll again
+      document.documentElement.style.overflow = "auto";
     },
     openModal(){
+      // prevenet scroll
+      document.documentElement.style.overflow = "hidden";
       this.$refs.dialog.showModal();
     }
   },
@@ -53,7 +57,7 @@ export default {
   text-align: center;
   background-color: var(--color-back-modal);
   border: 0;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 8px;
   min-height: 64px;
 }

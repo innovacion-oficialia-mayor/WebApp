@@ -11,11 +11,6 @@ export default {
             <p>Todos los derechos reservados</p>
         </div>
         <div class="footer__image">
-            <!-- <app-link :to="{name: 'dashboard'}" class="footer__link">
-                <picture class="footer__logo-wrapper">
-                    <img class="footer__logo" src="@/assets/logo.png" alt="imagen de celaya">
-                </picture>
-            </app-link> -->
             <app-button
             :to="{name:'dashboard'}"
             typeStyle="no-style" class="footer__link">
@@ -31,7 +26,7 @@ export default {
 .footer{
     width: 100%;
     display: flex;
-    padding: 11px 14px;
+    padding: 10px 14px;
     align-items: center;
     justify-content: space-between;
     background-color: var(--color-text);
