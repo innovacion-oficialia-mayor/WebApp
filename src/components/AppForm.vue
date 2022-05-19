@@ -36,15 +36,17 @@ export default {
     <app-input class="app__form-input" v-for="input in inputsList" :key="input.id" :currentInput="input"></app-input>
     <p v-show="state" class="app__form-msg">Datos invalidos, verifica los campos y vuelve a intentarlo</p>
 
-    <app-button
-      typeBtn="submit"
-      colorBtn="rose"
-      typeStyle="fill"
-      :sizeBtn="submitSize" class="app__form-submit">
-        {{submitText}}
-    </app-button>
-    <!-- extra button if is neccesary to camcel or close something -->
-    <slot name="extra-button"></slot>
+    <div class="app__form-buttons">
+      <app-button
+        typeBtn="submit"
+        colorBtn="rose"
+        typeStyle="fill"
+        :sizeBtn="submitSize" class="app__form-submit">
+          {{submitText}}
+      </app-button>
+      <!-- extra button if is neccesary to camcel or close something -->
+      <slot name="extra-button"></slot>
+    </div>
   </form>
 </template>
 
@@ -54,8 +56,10 @@ export default {
     width: 100%;
   }
 
-  .app__form > button {
-    margin: 10px;
+  .app__form-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
   }
 
   .app__form-input {
