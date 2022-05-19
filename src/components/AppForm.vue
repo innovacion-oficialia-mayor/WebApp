@@ -59,6 +59,7 @@ export default {
   .app__form-buttons {
     display: flex;
     justify-content: space-evenly;
+    gap: 15px;
     margin-top: 25px;
   }
 
