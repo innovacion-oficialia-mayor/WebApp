@@ -223,7 +223,8 @@ export default {
 
   <!-- Content where the users loading -->
   <section class="register__content">
-    <card-user toRoute="admin"
+    <card-user toRoute="editUser"
+    :currentUser="user"
     :userActive="user.activo"
     v-for="user in users" :key="user.id"
     @user-change="passModalState">
@@ -248,10 +249,6 @@ export default {
 
 
 <style scoped>
-  svg {
-    width: 20px;
-  }
-
   /* section to do some actions and search */
   .register__search-set {
     width: 90%;

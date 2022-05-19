@@ -13,9 +13,25 @@ export default {
 <template>
   <label :for="currentInput.id" class="app-input__label">
     <span class="app-input__span">{{ currentInput.labelText }}</span>
-    <input v-if="currentInput.type !== 'list'" :type="currentInput.type" :name="currentInput.name" :id="currentInput.id" class="app-input__input" :placeholder="currentInput.placeholder" required :pattern="currentInput.pattern ?? '.*'">
+    <input
+    v-if="currentInput.type !== 'list'"
+    :type="currentInput.type"
+    :name="currentInput.name"
+    :id="currentInput.id"
+    :placeholder="currentInput.placeholder"
+    required
+    :pattern="currentInput.pattern ?? '.*'"
+    :value="currentInput.value || ''"
+    class="app-input__input">
 
-    <input v-else :list="currentInput.listName" :name="currentInput.name" :id="currentInput.id" class="app-input__input-list" :placeholder="currentInput.placeholder">
+    <input
+    v-else
+    :list="currentInput.listName"
+    :name="currentInput.name"
+    :id="currentInput.id"
+    :placeholder="currentInput.placeholder"
+    :value="currentInput.value || ''"
+    class="app-input__input-list" >
     <datalist :id="currentInput.listName">
       <option v-for="(option, index) in currentInput.options" :key="index" :value="option"/>
     </datalist>

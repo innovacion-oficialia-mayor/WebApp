@@ -11,6 +11,10 @@ export default {
             type: Boolean,
             default: false
         },
+        currentUser:{
+            type: Object,
+            required: true
+        }
     },
     computed: {
         isUserDesactive() {
@@ -42,7 +46,7 @@ export default {
                 <slot name="status"></slot>
             </p>
             <app-button
-            :to="{name:`${toRoute}`}"
+            :to="{name:`${toRoute}`, params:{id:currentUser.id, slug: currentUser.name}}"
             colorBtn="rose"
             typeStyle="unfill"
             sizeBtn="small" class="card__edit-link">

@@ -42,6 +42,15 @@ const routes = [
   },
 
   {
+    path: '/admin/dashboard/register/editUser/:id/:slug',
+    name: 'editUser',
+    component: () => import('@/views/admin/EditUser.vue'),
+    props: route => ({
+      id: parseInt(route.params.id),
+    })
+  },
+
+  {
     path: '/admin/dashboard/clima',
     name: 'clima',
     component: () => import('@/views/admin/ClimaAdmin.vue')

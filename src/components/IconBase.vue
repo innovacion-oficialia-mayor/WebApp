@@ -40,6 +40,9 @@ export default {
 </template>
 
 <style scoped>
-
+  svg {
+    width: 20px;
+    cursor: pointer;
+  }
 </style>
 

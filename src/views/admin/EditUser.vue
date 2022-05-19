@@ -1,4 +1,7 @@
 <script>
+// FIXME: This will replace with pinia store
+import userData from '@/data.json';
+
 import TheMenu from '@/components/TheMenu.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import IconBase from '@/components/IconBase.vue';
@@ -6,7 +9,13 @@ import TheFooter from '@/components/TheFooter.vue';
 import AppForm from '@/components/AppForm.vue';
 
 export default {
-  name: 'AddUser',
+  name: 'EditUser',
+  props: {
+    id: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     'the-menu':TheMenu,
     'the-header': TheHeader,
@@ -20,16 +29,19 @@ export default {
     };
   },
   methods: {
-    handlerInfoSubmit(e){
+     handlerEditSubmit(e){
         const data = Object.fromEntries(new FormData(e.target));
         console.log(data);
         // validate information of the user
     },
   },
-
   computed: {
-     inputsList(){
-       return [
+    user() {
+      return userData.users.find(user =>  user.id === this.id);
+    },
+    //FIXME: This will replace with pinia store and check if it's correct in the computed properties
+    inputsList(){
+      return [
         {
           id: 1,
           type:'text',
@@ -58,6 +70,7 @@ export default {
           name: 'email',
           placeholder:'Correo electrónico',
           pattern:'[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
+          value: this.user.email,
         },
         {
           id: 5,
@@ -73,7 +86,8 @@ export default {
           type: 'text',
           labelText: 'Nómina',
           name: 'payroll',
-          placeholder: 'Ingresa el número de nómina'
+          placeholder: 'Ingresa el número de nómina',
+          value: this.user.nomina,
         },
         {
           id: 7,
@@ -82,7 +96,7 @@ export default {
           options: ['Catorcenal', 'Quincenal'],
           labelText: 'Tipo de nómina',
           name: 'payrollType',
-          placeholder: 'Selecciona el tipo de nómina'
+          placeholder: 'Selecciona el tipo de nómina',
         },
         {
           id: 8,
@@ -119,6 +133,7 @@ export default {
           labelText: 'Dependencia',
           name: 'dependence',
           placeholder: 'Selecciona dependencia',
+          value: this.user.dependencia,
         },
         {
           id: 12,
@@ -146,16 +161,16 @@ export default {
           placeholder: 'Rol de usuario',
         }
       ];
-     }
-  }
+    }
 
+  },
 };
 </script>
 
 <template>
   <the-header>
       <template #text>
-        Registrar empleado
+        Editar empleado
       </template>
       <template #action>
         <icon-base name="menu" color="#1B1A2F" width="72" height="48" role="button" @click="isMenuOpen = !isMenuOpen"></icon-base>
@@ -163,15 +178,12 @@ export default {
       <the-menu v-model="isMenuOpen"></the-menu>
   </the-header>
 
-
-
-
   <main class="register__wraper">
-    <h3 class="register__advice">Llena todos los datos correctamente</h3>
+    <h3 class="register__advice">Edita los datos que requieras</h3>
     <app-form
       :inputsList="inputsList"
       submitText="Guardar" submitSize="medium"
-      @submit.prevent="handlerInfoSubmit" >
+      @submit.prevent="handlerEditSubmit" >
       <template #extra-button>
           <app-button
           typeBtn="button"
@@ -186,7 +198,6 @@ export default {
   </main>
 
   <the-footer></the-footer>
-
 </template>
 
 <style scoped>
