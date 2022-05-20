@@ -7,6 +7,13 @@ export default {
       required: true
     },
   },
+  data(){
+    return {
+      isFocused: false,
+    };
+  },
+  methods: {
+  }
 };
 </script>
 
@@ -25,15 +32,19 @@ export default {
     class="app-input__input">
 
     <input
+    role="combobox"
     v-else
-    :list="currentInput.listName"
+    list=""
     :name="currentInput.name"
     :id="currentInput.id"
     :placeholder="currentInput.placeholder"
     :value="currentInput.value || ''"
-    class="app-input__input-list" >
-    <datalist :id="currentInput.listName">
-      <option v-for="(option, index) in currentInput.options" :key="index" :value="option"/>
+    class="app-input__input-list"
+    autocomplete="off"
+    @focus="$refs.dataList.classList.add('isActive')"
+    @focusout="$refs.dataList.classList.remove('isActive')">
+    <datalist :id="currentInput.listName" role="listbox" ref="dataList" class="app-input__datalist">
+      <option v-for="(option, index) in currentInput.options" :key="index" :value="option" class="app-input__option">{{option}}</option>
     </datalist>
 
   </label>
@@ -97,6 +108,36 @@ export default {
     75% {
       transform: translateX(4px);
     }
+  }
+
+  .app-input__datalist {
+    width: 100%;
+    position: relative;
+    border-radius: 0 0 5px 5px;
+    background-color: var(--color-primary-rose);
+    max-height: 100px;
+    overflow-y: auto;
+    transition: all 200ms ease-in-out;
+    height: 0;
+  }
+
+  .app-input__datalist.isActive {
+    display: block;
+    height: auto;
+    transition: all 200ms ease-in-out;
+  }
+
+  .app-input__option {
+    padding: 8px;
+    color: var(--color-text);
+    background-color: var(--color-primary-rose);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 250ms ease-in;
+  }
+
+  .app-input__option:hover, .active{
+    background-color: var(--color-primary-blue);
   }
 
 
