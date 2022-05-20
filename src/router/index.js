@@ -55,6 +55,11 @@ const routes = [
     name: 'clima',
     component: () => import('@/views/admin/ClimaAdmin.vue')
   },
+  {
+    path: '/admin/clima/newpoll',
+    name: 'newpoll',
+    component: () => import('@/views/admin/NewPoll.vue')
+  }
 ];
 
 // create routes and history
