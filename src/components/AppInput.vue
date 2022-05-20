@@ -13,6 +13,25 @@ export default {
     };
   },
   methods: {
+    handlerFocus(){
+      console.log('focus');
+      this.$refs.dataList.style.display = 'block';
+      this.$refs.dataList.style.opacity = '1';
+    },
+
+    handlerClickOption(e){
+      const input = e.target.parentNode.previousSibling;
+      console.log(input.value, e.target.value);
+      input.value = e.target.value;
+      this.$refs.dataList.style.display = 'none';
+    },
+
+    handlerInput(e){
+      const text = e.target.value.toLowerCase();
+      for(const option of this.$refs.dataList.options){
+        option.value.toLowerCase().includes(text) ? option.style.display = 'block' : option.style.display = 'none';
+      }
+    }
   }
 };
 </script>
@@ -41,10 +60,10 @@ export default {
     :value="currentInput.value || ''"
     class="app-input__input-list"
     autocomplete="off"
-    @focus="$refs.dataList.classList.add('isActive')"
-    @focusout="$refs.dataList.classList.remove('isActive')">
+    @focus="handlerFocus"
+    @input="handlerInput">
     <datalist :id="currentInput.listName" role="listbox" ref="dataList" class="app-input__datalist">
-      <option v-for="(option, index) in currentInput.options" :key="index" :value="option" class="app-input__option">{{option}}</option>
+      <option v-for="(option, index) in currentInput.options" :key="index" :value="option" class="app-input__option" @click.stop.prevent="handlerClickOption">{{option}}</option>
     </datalist>
 
   </label>
@@ -115,17 +134,14 @@ export default {
     position: relative;
     border-radius: 0 0 5px 5px;
     background-color: var(--color-primary-rose);
-    max-height: 100px;
     overflow-y: auto;
     transition: all 200ms ease-in-out;
-    height: 0;
+    max-height: 100px;
   }
 
-  .app-input__datalist.isActive {
-    display: block;
-    height: auto;
-    transition: all 200ms ease-in-out;
-  }
+   .app-input__datalist.isActive  {
+     display: block;
+   }
 
   .app-input__option {
     padding: 8px;
