@@ -106,7 +106,7 @@ export default {
     color: var(--color-text-mute);
   }
 
-  .app-input__input:invalid:not(:placeholder-shown) {
+  .app-input__input:invalid:not(:placeholder-shown):not(input[type='date']) {
     border-color: var(--color-secundary-red);
     animation: shake 300ms;
   }
