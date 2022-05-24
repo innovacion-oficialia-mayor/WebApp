@@ -39,7 +39,11 @@ const ICONS = {
     path: 'M5.64 29.64L24 11.32L42.36 29.64L48 24L24 0L0 24L5.64 29.64Z',
     width: '48',
     height: '30',
-  }
+  },
+  // <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  // <path d="M22.0625 0L12.5 9.27125L2.9375 0L0 2.85425L12.5 15L25 2.85425L22.0625 0Z" fill="#3552AB"/>
+  // </svg>
+
 };
 
 
