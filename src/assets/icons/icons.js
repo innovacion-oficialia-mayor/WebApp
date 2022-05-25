@@ -40,6 +40,11 @@ const ICONS = {
     width: '48',
     height: '30',
   },
+  download: {
+    path: 'M23 9.88235H16.4286V0H6.57143V9.88235H0L11.5 21.4118L23 9.88235ZM0 24.7059V28H23V24.7059H0Z',
+    width: '23',
+    height: '28',
+  }
   // <svg width="25" height="15" viewBox="0 0 25 15" fill="none" xmlns="http://www.w3.org/2000/svg">
   // <path d="M22.0625 0L12.5 9.27125L2.9375 0L0 2.85425L12.5 15L25 2.85425L22.0625 0Z" fill="#3552AB"/>
   // </svg>

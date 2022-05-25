@@ -56,9 +56,14 @@ const routes = [
     component: () => import('@/views/admin/ClimaAdmin.vue')
   },
   {
-    path: '/admin/clima/newpoll',
+    path: '/admin/dashboard/clima/newpoll',
     name: 'newpoll',
     component: () => import('@/views/admin/NewPoll.vue')
+  },
+  {
+    path: '/admin/dashboard/clima/download',
+    name: 'download',
+    component: () => import('@/views/admin/DownloadAdmin.vue')
   }
 ];
 
