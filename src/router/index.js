@@ -58,7 +58,7 @@ const routes = [
   {
     path: '/admin/dashboard/clima/newpoll',
     name: 'newpoll',
-    component: () => import('@/views/admin/NewPoll.vue')
+    component: () => import('@/views/admin/NewPollAdmin.vue')
   },
   {
     path: '/admin/dashboard/clima/download',

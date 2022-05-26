@@ -40,7 +40,6 @@ export default {
       <p class="the-modal__message">
         <slot name="message"></slot>
       </p>
-
       <div class="the-modal__actions">
         <slot name="actions"></slot>
       </div>

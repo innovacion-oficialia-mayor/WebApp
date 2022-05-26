@@ -6,6 +6,7 @@ import TheFooter from '@/components/TheFooter.vue';
 import AppForm from '@/components/AppForm.vue';
 
 export default {
+    name: 'NewPollAdmin',
     components: {
         'the-menu': TheMenu,
         'the-header': TheHeader,
@@ -41,11 +42,11 @@ export default {
                     labelText: 'Porcentaje a responder',
                     placeholder: 'Porcentaje a responder',
                 }
-            ]
+            ];
         },
     },
 
-}
+};
 </script>
 <template>
     <the-header>

@@ -5,6 +5,11 @@ import IconBase from '@/components/IconBase.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import AppAcordion from '@/components/AppAccordion.vue';
 import AppAccordionItem from '@/components/AppAccordionItem.vue';
+import TheModal from '@/components/TheModal.vue';
+import AppForm from '@/components/AppForm.vue';
+
+
+
     export default {
         name: 'ClimaAdmin',
         components: {
@@ -13,11 +18,14 @@ import AppAccordionItem from '@/components/AppAccordionItem.vue';
             'icon-base': IconBase,
             'the-footer': TheFooter,
             'app-acordion': AppAcordion,
-            'app-accordion-item':AppAccordionItem
+            "the-modal":TheModal,
+            'app-accordion-item':AppAccordionItem,
+            "app-form":AppForm,
         },
         data(){
             return {
                 isMenuOpen: false,
+                isPassModalOpen: false,
                 // data from the polls
                 polls: [
                     {
@@ -41,13 +49,62 @@ import AppAccordionItem from '@/components/AppAccordionItem.vue';
                         currentPorcentage: 50,
                         active: false,
                     },
-                ]
+                ],
+                   passInputsList: [
+                    {
+                        id:1,
+                        type:'password',
+                        labelText: 'Contraseña',
+                        name: 'password',
+                        placeholder:'Contraseña',
+                    },
+                    {
+                        id:2,
+                        type:'password',
+                        labelText: 'Confirmar contraseña',
+                        name: 'passwordConfirm',
+                        placeholder:'Cponfirmar contraseña',
+                    },
+                ],
             };
         },
+        methods: {
+            passModalState(){
+                this.isPassModalOpen = !this.isPassModalOpen;
+            },
+             handlerConfirmSubmit(e){
+                const data = Object.fromEntries(new FormData(e.target));
+                console.log(data);
+                // validate the password before an action
+            },
+        }
     };
 </script>
 
 <template>
+
+    <!-- Modal to confirm password -->
+     <Teleport to="body">
+      <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="isPassModalOpen">
+        <template #message>Ingresa tu contraseña para continuar</template>
+
+        <template #actions>
+          <app-form
+            :inputsList="passInputsList" submitText="Confirmar" submitSize="medium" @submit.prevent="handlerConfirmSubmit">
+             <template #extra-button>
+                <app-button
+                typeBtn="button"
+                typeStyle="fill"
+                colorBtn="blue"
+                sizeBtn="medium" @click="passModalState">
+                  Volver
+                </app-button>
+            </template>
+          </app-form>
+        </template>
+      </the-modal>
+    </Teleport>
+
     <!-- header -->
     <the-header>
         <template #text>
@@ -90,15 +147,15 @@ import AppAccordionItem from '@/components/AppAccordionItem.vue';
                                     typeStyle="unfill"
                                     colorBtn="red"
                                     sizeBtn="small"
-                                    class="poll__status-btn" >
+                                    class="poll__status-btn"  @click="passModalState">
                                         Eliminar
                                     </app-button>
                                 </div>
                                 <!-- Poll ended -->
                                 <div v-else class="poll__status-wrapper">
-                                    <p class="poll__status__text-close">Encuesta Cerrada</p>
+                                    <p class="poll__status__text">Encuesta Cerrada</p>
                                     <app-button
-                                    :to="{name:'addUser'}"
+                                    :to="{name:'download'}"
                                     colorBtn="yellow"
                                     typeStyle="unfill"
                                     sizeBtn="small" class="poll__status-btn">
@@ -112,7 +169,6 @@ import AppAccordionItem from '@/components/AppAccordionItem.vue';
             </app-acordion>
         </section>
     </main>
-
     <!-- Footer -->
     <the-footer></the-footer>
 </template>

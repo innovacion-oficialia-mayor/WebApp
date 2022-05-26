@@ -159,7 +159,7 @@ export default {
       </the-modal>
   </Teleport>
 
-    <!-- Second modal to unsubscribe users -->
+    <!-- Second modal to confirm password-->
     <Teleport to="body">
       <the-modal srcImage="/src/assets/images/confirm-pass.svg" :isOpen="isPassModalOpen">
         <template #message>Ingresa tu contraseña para continuar</template>
@@ -181,7 +181,6 @@ export default {
       </the-modal>
   </Teleport>
 
-  <!-- button with icon to rregister a new user -->
 
   <!-- header -->
   <the-header>

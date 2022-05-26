@@ -3,27 +3,67 @@ import TheMenu from '@/components/TheMenu.vue';
 import TheHeader from '@/components/TheHeader.vue';
 import IconBase from '@/components/IconBase.vue';
 import TheFooter from '@/components/TheFooter.vue';
-import AppForm from '@/components/AppForm.vue';
 import AppDownload from '@/components/AppDownload.vue';
+import TheModal from '@/components/TheModal.vue';
+
+
 export default {
+    name: 'DownloadAdmin',
     components: {
         'the-menu': TheMenu,
         'the-header': TheHeader,
         'icon-base':IconBase,
         'the-footer': TheFooter,
-        'app-form': AppForm,
         'app-download': AppDownload,
+        "the-modal":TheModal,
+
     },
     data() {
         return {
             isMenuOpen: false,
+            // data from the polls and pass to the app-download component as a prop
         };
     },
 
-}
+};
 </script>
 
 <template>
+
+    <!-- Modal messages -->
+    <Teleport to="body">
+      <the-modal srcImage="/src/assets/images/ok.svg">
+        <template #message>La encuesta fue creada satisfactoriamente</template>
+
+        <template #actions>
+            <app-button
+                typeBtn="button"
+                typeStyle="fill"
+                colorBtn="green"
+                sizeBtn="medium">
+                  De acuerdo
+            </app-button>
+        </template>
+      </the-modal>
+    </Teleport>
+
+    <Teleport to="body">
+      <the-modal srcImage="/src/assets/images/error.svg">
+        <template #message>¡Oh no! Algo salió mal 😔</template>
+
+        <template #actions>
+            <app-button
+                typeBtn="button"
+                typeStyle="fill"
+                colorBtn="red"
+                sizeBtn="medium">
+                  De acuerdo
+            </app-button>
+        </template>
+      </the-modal>
+    </Teleport>
+
+    <!-- HEADER -->
     <the-header>
       <template #text>
         Informes
@@ -34,6 +74,7 @@ export default {
       <the-menu v-model="isMenuOpen"></the-menu>
     </the-header>
 
+    <!-- Main content -->
     <main class="download__wraper">
         <div class="download__title-container">
             <h1 class="download__title">Informes Clima Laboral 2023</h1>
@@ -51,6 +92,8 @@ export default {
             </template>
         </app-download>
     </main>
+
+    <!-- footer -->
     <the-footer></the-footer>
 </template>
 
