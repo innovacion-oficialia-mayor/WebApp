@@ -34,7 +34,6 @@ export default {
 </script>
 
 <template>
-  <div class="dashboard__container">
     <Teleport to="body">
       <the-modal srcImage="/src/assets/images/modal-logout.svg" :isOpen="isModalOpen">
         <template #message>¿Estás seguro que deseas cerrar  tu sesión?</template>
@@ -108,13 +107,9 @@ export default {
     </section>
 
     <the-footer></the-footer>
-  </div>
 </template>
 
 <style scoped>
-  .dashboard__container {
-    width: 100%;
-  }
   svg {
     width: 25px;
   }

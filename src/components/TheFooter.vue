@@ -31,6 +31,9 @@ export default {
     justify-content: space-between;
     background-color: var(--color-text);
     color: var(--color-background);
+    position: absolute;
+    bottom: 0;
+    height: 68px;
 }
 
 .footer__text {
